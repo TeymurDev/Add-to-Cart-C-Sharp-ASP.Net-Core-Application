@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var productimp in Model)
+        {
+            <tr class="bg-white">
+                <th scope="row">@productimp.Id</th>
+                <td> <img src="~/images/@productimp.Image" width="50"></td>
+                <td>@productimp.Title</td>
+                <td>@productimp.Price</td>
+                <td>
+                    <div class="d-flex">
+                        @*<a asp-action="Edit" asp-route-id="@teamadm.Id" class="btn btn-info">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>*@
+
+                        @if (Model.Count() > 2)
+                        {
+                            <a asp-action="Delete" asp-route-id="@productimp.Id" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        }
+
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
